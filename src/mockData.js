@@ -1,6 +1,4 @@
-import { Transaction, MonthlyData, CategorySpending } from './types';
-
-export const mockTransactions: Transaction[] = [
+export const mockTransactions = [
   { id: '1', date: '2024-01-15', description: 'Salary', amount: 5000, category: 'Salary', type: 'income' },
   { id: '2', date: '2024-01-16', description: 'Grocery Shopping', amount: 150, category: 'Food', type: 'expense' },
   { id: '3', date: '2024-01-18', description: 'Electric Bill', amount: 120, category: 'Utilities', type: 'expense' },
@@ -27,13 +25,13 @@ export const mockTransactions: Transaction[] = [
   { id: '24', date: '2024-03-28', description: 'Dividend Payment', amount: 200, category: 'Investment', type: 'income' },
 ];
 
-export const mockMonthlyData: MonthlyData[] = [
+export const mockMonthlyData = [
   { month: 'Jan', balance: 4500, income: 5800, expenses: 1300 },
   { month: 'Feb', balance: 5200, income: 6550, expenses: 1350 },
   { month: 'Mar', balance: 5800, income: 6100, expenses: 1300 },
 ];
 
-export const mockCategorySpending: CategorySpending[] = [
+export const mockCategorySpending = [
   { category: 'Food', amount: 440, percentage: 25 },
   { category: 'Transportation', amount: 105, percentage: 6 },
   { category: 'Utilities', amount: 225, percentage: 13 },

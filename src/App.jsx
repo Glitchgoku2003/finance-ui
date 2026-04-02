@@ -1,6 +1,7 @@
 import { DashboardProvider } from './DashboardContext.jsx';
 import { Header } from './Header.jsx';
 import { SummaryCards } from './SummaryCards.jsx';
+import { Charts } from './Charts.jsx';
 import { TransactionsSection } from './TransactionsSection.jsx';
 import { AddTransactionModal } from './AddTransactionModal.jsx';
 import { useEffect } from 'react';
@@ -23,6 +24,8 @@ function AppContent() {
       <Header />
       
       <SummaryCards />
+      
+      <Charts />
       
       <TransactionsSection />
       

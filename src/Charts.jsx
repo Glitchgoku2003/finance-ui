@@ -11,7 +11,7 @@ import {
   ArcElement,
 } from 'chart.js';
 import { Line, Pie } from 'react-chartjs-2';
-import { mockMonthlyData, mockCategorySpending } from './mockData';
+import { mockMonthlyData, mockCategorySpending } from './mockData.js';
 
 ChartJS.register(
   CategoryScale,
@@ -57,7 +57,7 @@ export function BalanceTrendChart() {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'top' as const,
+        position: 'top',
       },
       title: {
         display: false,
@@ -67,7 +67,7 @@ export function BalanceTrendChart() {
       y: {
         beginAtZero: true,
         ticks: {
-          callback: function(value: string | number) {
+          callback: function(value) {
             return '$' + Number(value).toLocaleString();
           }
         }
@@ -111,14 +111,14 @@ export function SpendingBreakdownChart() {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'right' as const,
+        position: 'right',
       },
       title: {
         display: false,
       },
       tooltip: {
         callbacks: {
-          label: function(context: { label?: string; parsed: number; dataIndex: number }) {
+          label: function(context) {
             const label = context.label || '';
             const value = '$' + context.parsed.toLocaleString();
             const percentage = mockCategorySpending[context.dataIndex].percentage;

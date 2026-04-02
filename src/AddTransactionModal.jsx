@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDashboard } from './DashboardContext';
+import { useDashboard } from './DashboardContext.jsx';
 
 export function AddTransactionModal() {
   const { state, dispatch } = useDashboard();
@@ -12,18 +12,14 @@ export function AddTransactionModal() {
     date: new Date().toISOString().split('T')[0]
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
-    if (!formData.description || !formData.amount) {
-      return;
-    }
-
     const newTransaction = {
       id: Date.now().toString(),
       description: formData.description,

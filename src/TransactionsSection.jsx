@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDashboard } from './DashboardContext';
+import { useDashboard } from './DashboardContext.jsx';
 
 export function TransactionsSection() {
   const { state, dispatch } = useDashboard();

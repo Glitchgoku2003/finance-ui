@@ -1,4 +1,4 @@
-import { useDashboard } from './DashboardContext';
+import { useDashboard } from './DashboardContext.jsx';
 
 export function Header() {
   const { state, dispatch } = useDashboard();

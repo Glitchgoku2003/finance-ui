@@ -1,17 +1,17 @@
-import { useDashboard } from './DashboardContext';
+import { useDashboard } from './DashboardContext.jsx';
 
 export function SummaryCards() {
   const { getFinancialSummary } = useDashboard();
   const summary = getFinancialSummary();
 
-  const formatCurrency = (amount: number) => {
+  const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
     }).format(amount);
   };
 
-  const formatPercentage = (value: number) => {
+  const formatPercentage = (value) => {
     return `${value >= 0 ? '+' : ''}${value.toFixed(1)}%`;
   };
 

@@ -1,10 +1,10 @@
-import { DashboardProvider } from './DashboardContext';
-import { Header } from './Header';
-import { SummaryCards } from './SummaryCards';
-import { TransactionsSection } from './TransactionsSection';
-import { AddTransactionModal } from './AddTransactionModal';
+import { DashboardProvider } from './DashboardContext.jsx';
+import { Header } from './Header.jsx';
+import { SummaryCards } from './SummaryCards.jsx';
+import { TransactionsSection } from './TransactionsSection.jsx';
+import { AddTransactionModal } from './AddTransactionModal.jsx';
 import { useEffect } from 'react';
-import { useDashboard } from './DashboardContext';
+import { useDashboard } from './DashboardContext.jsx';
 import './dashboard.css';
 
 function AppContent() {

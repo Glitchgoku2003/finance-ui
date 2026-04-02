@@ -1,31 +1,6 @@
-import React, { createContext, useContext, useReducer, type ReactNode } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
 
-type UserRole = 'viewer' | 'admin';
-
-interface Transaction {
-  id: string;
-  date: string;
-  description: string;
-  amount: number;
-  category: string;
-  type: 'income' | 'expense';
-}
-
-interface DashboardState {
-  transactions: Transaction[];
-  userRole: UserRole;
-  isDarkMode: boolean;
-  isAddModalOpen: boolean;
-}
-
-type DashboardAction =
-  | { type: 'SET_USER_ROLE'; payload: UserRole }
-  | { type: 'TOGGLE_DARK_MODE' }
-  | { type: 'OPEN_ADD_MODAL' }
-  | { type: 'CLOSE_ADD_MODAL' }
-  | { type: 'ADD_TRANSACTION'; payload: Transaction };
-
-const initialState: DashboardState = {
+const initialState = {
   transactions: [
     { id: '1', date: '2024-01-15', description: 'Salary', amount: 5000, category: 'Salary', type: 'income' },
     { id: '2', date: '2024-01-16', description: 'Grocery Shopping', amount: 150, category: 'Food', type: 'expense' },
@@ -43,7 +18,7 @@ const initialState: DashboardState = {
   isAddModalOpen: false,
 };
 
-function dashboardReducer(state: DashboardState, action: DashboardAction): DashboardState {
+function dashboardReducer(state, action) {
   switch (action.type) {
     case 'SET_USER_ROLE':
       return { ...state, userRole: action.payload };
@@ -60,15 +35,9 @@ function dashboardReducer(state: DashboardState, action: DashboardAction): Dashb
   }
 }
 
-interface DashboardContextType {
-  state: DashboardState;
-  dispatch: React.Dispatch<DashboardAction>;
-  getFinancialSummary: () => { totalBalance: number; totalIncome: number; totalExpenses: number; monthlyChange: number };
-}
+export const DashboardContext = createContext(undefined);
 
-export const DashboardContext = createContext<DashboardContextType | undefined>(undefined);
-
-export function DashboardProvider({ children }: { children: ReactNode }) {
+export function DashboardProvider({ children }) {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
 
   const getFinancialSummary = () => {

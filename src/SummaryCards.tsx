@@ -21,7 +21,7 @@ export function SummaryCards() {
         <div className="card-title">Total Balance</div>
         <div className="card-value">{formatCurrency(summary.totalBalance)}</div>
         <div className={`card-change ${summary.monthlyChange >= 0 ? 'positive' : 'negative'}`}>
-          <span>{summary.monthlyChange >= 0 ? '�' : '📉'}</span>
+          <span>{summary.monthlyChange >= 0 ? '🚀' : '📉'}</span>
           <span>{formatPercentage(summary.monthlyChange)} from last month</span>
         </div>
       </div>
@@ -30,7 +30,7 @@ export function SummaryCards() {
         <div className="card-title">Total Income</div>
         <div className="card-value">{formatCurrency(summary.totalIncome)}</div>
         <div className="card-change positive">
-          <span>�</span>
+          <span>💎</span>
           <span>All time earnings</span>
         </div>
       </div>
@@ -39,7 +39,7 @@ export function SummaryCards() {
         <div className="card-title">Total Expenses</div>
         <div className="card-value">{formatCurrency(summary.totalExpenses)}</div>
         <div className="card-change negative">
-          <span>�</span>
+          <span>🔥</span>
           <span>All time spending</span>
         </div>
       </div>
@@ -53,7 +53,7 @@ export function SummaryCards() {
           }
         </div>
         <div className="card-change positive">
-          <span>�</span>
+          <span>🏆</span>
           <span>Of total income</span>
         </div>
       </div>

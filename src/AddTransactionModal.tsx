@@ -7,10 +7,15 @@ export function AddTransactionModal() {
   const [formData, setFormData] = useState({
     description: '',
     amount: '',
+    type: 'expense',
     category: 'Food',
-    type: 'expense' as 'income' | 'expense',
-    date: new Date().toISOString().split('T')[0],
+    date: new Date().toISOString().split('T')[0]
   });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,31 +28,28 @@ export function AddTransactionModal() {
       id: Date.now().toString(),
       description: formData.description,
       amount: parseFloat(formData.amount),
-      category: formData.category,
       type: formData.type,
-      date: formData.date,
+      category: formData.category,
+      date: formData.date
     };
 
     dispatch({ type: 'ADD_TRANSACTION', payload: newTransaction });
-    dispatch({ type: 'CLOSE_ADD_MODAL' });
     
     // Reset form
     setFormData({
       description: '',
       amount: '',
-      category: 'Food',
       type: 'expense',
-      date: new Date().toISOString().split('T')[0],
+      category: 'Food',
+      date: new Date().toISOString().split('T')[0]
     });
+    
+    // Close modal
+    dispatch({ type: 'CLOSE_ADD_MODAL' });
   };
 
   const handleClose = () => {
     dispatch({ type: 'CLOSE_ADD_MODAL' });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   if (!state.isAddModalOpen) {

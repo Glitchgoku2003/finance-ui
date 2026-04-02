@@ -3,8 +3,8 @@ import { useDashboard } from './DashboardContext';
 export function Header() {
   const { state, dispatch } = useDashboard();
 
-  const handleRoleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch({ type: 'SET_USER_ROLE', payload: e.target.value as 'viewer' | 'admin' });
+  const handleRoleChange = (e) => {
+    dispatch({ type: 'SET_USER_ROLE', payload: e.target.value });
   };
 
   const toggleDarkMode = () => {

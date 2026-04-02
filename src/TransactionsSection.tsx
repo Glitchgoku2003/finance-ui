@@ -4,7 +4,7 @@ import { useDashboard } from './DashboardContext';
 export function TransactionsSection() {
   const { state, dispatch } = useDashboard();
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterType, setFilterType] = useState<'all' | 'income' | 'expense'>('all');
+  const [filterType, setFilterType] = useState('all');
 
   const filteredTransactions = state.transactions
     .filter(t => {
@@ -15,14 +15,14 @@ export function TransactionsSection() {
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  const formatCurrency = (amount: number) => {
+  const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
     }).format(amount);
   };
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
@@ -52,7 +52,7 @@ export function TransactionsSection() {
           <select
             className="filter-select"
             value={filterType}
-            onChange={(e) => setFilterType(e.target.value as 'all' | 'income' | 'expense')}
+            onChange={(e) => setFilterType(e.target.value)}
           >
             <option value="all">✨ All Types</option>
             <option value="income">💰 Income</option>
